@@ -1,8 +1,6 @@
 - hosts: servers
   become: yes
-  vars:
-    favcolor: blue6
-  
+
   tasks:  
     - name: update cache
       apt: update_cache=yes   
