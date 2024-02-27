@@ -1,0 +1,21 @@
+- hosts: servers
+  become: yes
+  vars:
+    favcolor: blue6
+  
+  tasks:  
+    - name: update cache
+      apt: update_cache=yes   
+   
+    - name: Install Nginx Software
+      apt:  
+        name: nginx 
+        state: latest
+        
+   
+      notify:
+        - restart nginx
+
+  handlers:
+    - name: restart nginx
+      service: name=nginx state=reloaded
